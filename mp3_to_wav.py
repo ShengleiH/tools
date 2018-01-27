@@ -16,11 +16,11 @@ def get_files(root_path):
 
 if __name__ == '__main__':
     source_path = 'mp3_data'
-	  distination_path = 'wav_data'
-	  files = get_files(root_path=source_path)
+    distination_path = 'wav_data'
+    files = get_files(root_path=source_path)
 
-	  for i, wav_file in enumerate(files):
-		    print('Processing file {}/{}'.format(i, len(files)))
-		    wav_name = wav_file.split('/')[-1].split('.')[0]
-		    to_wav_command = 'ffmpeg -i {} -acodec pcm_u8 -ar 16000 {}/{}'.format(wav_file, distination_path, wav_name+'.wav')
-		    subprocess.call(to_wav_command, shell=True)
+    for i, wav_file in enumerate(files):
+        print('Processing file {}/{}'.format(i, len(files)))
+	wav_name = wav_file.split('/')[-1].split('.')[0]
+	to_wav_command = 'ffmpeg -i {} -acodec pcm_u8 -ar 16000 {}/{}'.format(wav_file, distination_path, wav_name+'.wav')
+	subprocess.call(to_wav_command, shell=True)
